@@ -19,6 +19,7 @@ El usuario puede registrar y consultar la siguiente información:
 - Micrófono / No micrófono
 - Derivados: pre-amps/Línea directa y DI box/Línea directa (respectivamente)
 
+
 - Tipo de Micrófono Inalámbrico
 - Uso del Micrófono
 - Rack receptor
@@ -26,6 +27,7 @@ El usuario puede registrar y consultar la siguiente información:
 - Nombre Responsable
 - Batería
 - Derivado: Turned On/Off
+
 
 - Título pista
 - No. Cola
