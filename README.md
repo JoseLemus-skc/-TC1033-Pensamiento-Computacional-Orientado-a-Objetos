@@ -1,38 +1,51 @@
  -TC1033-Pensamiento-Computacional-Orientado-a-Objetos
-# Administración de Instrumentos en Eventos.
+# Creador de emails para TicketMaster®.
 
 ## Problema.
-Eres parte del Staff Técnico durante un concierto. Es necesario saber las conexiones de los instrumentos que llegan al Stage-box y de ahí a la consola; para esto se tienen que categorizar por tipo de instrumento (Percusivo, Strings, Viento y Teclados) y, a partir de ello, el instrumento específico. Igualmente, se tiene que tomar inventario de los micrófonos inalámbricos en uso, tanto por instrumentos como para vocales y sus conexiones en los diferentes racks. De ser necesario, también conocer los backing tracks utilizados y las características del equipo de origen (por lo general siendo una laptop perteneciente a algún instrumentista).
+Ticketmaster™ necesita una herramienta de software interna que permita a sus empleados generar correos electrónicos que, sin esfuerzo y de forma constante, hagan la vida de nuestros usuarios jodidamente miserable. Hemos observado que arruinar la experiencia del cliente manualmente requiere tiempo, energía y una pizca de voluntad. Tomar pasos para automatizar este proceso aumenta el sufrimiento generado per capita/empleado. Por es necesario el programa.
 
-## Rol del programa.
-Crear una clase por cada tipo de input relevante en la consola: Instrumento, Micrófono, Backing Track. Crear una clase de instrumentos que indique el tipo de instrumento junto con información relevante como el instrumento, nombre del instrumentista, línea de conexión, booleano micrófono, booleano línea directa, booleano pre-amp, booleano DI box. Deben haber métodos para preguntarle al usuario y permitir al usuario consultar los nombres del instrumento, del instrumentista, el número de la línea de conexión en el Stage-box, si se trata de un instrumento microfoneado o no y que esto, cuando se registre, derive en la opción de indicar si (en caso de ser True) se hace uso de pre-amps o si es por línea directa o (en caso de ser False) si se usó un DI box o si fue por línea directa.
+## Rol del programa. 
+Crear una clase base llamada Email, a partir de la cual se derivarán todas las clases de correos relevantes para los clientes. Las clases hijas serán: Spam promocional, Confirmación de compras, Recordatorio de conciertos y Tickets. Cada una de estas clases deberá construirse utilizando la misma información esencial que gestiona la clase madre: Direccion de origen, Direccion receptora, asunto, cuerpo, hora a enviar, prioridad (importante, normal, spam) y metodo de envio. Además de almacenar esta información, se contar con metodos para rellenar y consultar esta informacion, imprimir un boceto del correo, determinar a qué directorio del usuario debe enviarse según la prioridad asignada y cambiar su metodo de envio en caso de no apetecer un email.
 
-Crear una clase de micrófonos inalámbricos que indique el tipo de micrófono, el uso del micrófono, el rack al que pertenece, número de input, el nombre de la persona que le esté dando uso, cantidad de batería y booleano Live (On/Off). Deben haber métodos para preguntarle al usuario y permitir al usuario consultar qué tipo de micrófono es, cuál es el uso del micrófono, el rack que recibe su señal, el nombre de la persona que le esté dando uso en ese momento, la cantidad de batería con la que cuenta al momento del registro y saber si está prendido o no (en caso de no tener batería, automáticamente se marca como "No prendido").
+Crear una clase hija PromoSpam con los siguientes atributos: un promoCode, un discountPercent aleatorio y un campo isUnsubscribeFunctional que siempre será false (puede modificarse pero volverá a false porque no existe la menor intención de permitir que el usuario deje de recibir estas cosas).
 
-Crear una clase de Backing Track que indique el título de la pista, su número en la cola, duración de la pista, duración del count-in (clicks antes de iniciar la canción), duración total, nombre del equipo de origen y el nombre de la persona quien lo va a manejar. Deben haber métodos para preguntarle al usuario y permitir al usuario consultar el título de la pista que sonará, su número en la cola, su duración por sí sola, la duración del count-in y la duración total resultante, nombre del equipo de origen y el nombre de la persona quien lo va a manejar.
+Crear una clase hija PurchaseConfirmation con los siguientes atributos: un moneySpent, orderID, paymentMethod y un campo isRefundable que siempre será falso (igual, se puede intentar cambiarlo, pero regresará a falso como recordatorio al usuario de que aquí no existen los reembolsos). También se manejará un valor cantidad de dinero pagado + servicios, donde “servicios” es 200% del monto original por motivos absolutamente injustificables.
+
+Crear una clase hija ConcertReminder con los siguientes atributos: concertName, artist, venue, concertDate y un campo venueMap vacío. La fecha del correo se ajustará automáticamente a la fecha del concierto, ignorando cualquier otra configuración previa. Si se intenta colocar cualquier cosa dentro del venueMap, el programa dará un error, porque quien intente hacer la experiencia del usuario lo más mínimo agradable merece un recordatorio de la política de la empresa.
+
+Crear una clase hija Ticket con los siguientes atributos: el ticketCode, un contador changeSpamTries que incrementará cada vez que el usuario intente cambiar la prioridad del correo (cuando esto ocurra, tambien la prioridad cambiará a “spammhell, fuck you” y el método de envío a “horse”), un campo isWorking que presentará una posibilidad de 50/50 entre verdadero y falso y un campo hasBarcode que siempre será false y no se podra cambiar.
 
 ## Acciones del usuario.
-El usuario puede registrar y consultar la siguiente información:
-- Nombre Instrumento
-- Nombre Instrumentista
-- No. Línea
-- Micrófono / No micrófono
-- Derivados: pre-amps/Línea directa y DI box/Línea directa (respectivamente)
+El usuario puede registrar y consultar la siguiente información en todas las clases hijas:
+- Dirección de origen
+- Dirección receptora
+- Asunto
+- Cuerpo
+- Hora a enviar // Excepcion de ConcertReminder
+- Prioridad // Solo consultar
+- Metodo de envio // Solo consultar
 
 
-- Tipo de Micrófono Inalámbrico
-- Uso del Micrófono
-- Rack receptor
-- No. Input en el Rack
-- Nombre Responsable
-- Batería
-- Derivado: Turned On/Off
+El usuario puede registrar y consultar la siguiente información en PromoSpam
+- promoCode
+- discountPercent // Solo consultar
+- isUnsubscribeFunctional // En practica solo consultar
 
+El usuario puede registrar y consultar la siguiente información en PurchaseConfirmation
+- moneySpent
+- orderID
+- paymentMethod
+- isRefundable // En practica solo consultar
 
-- Título pista
-- No. Cola
-- Duración
-- Duración Count-in
-- Duración Total
-- Equipo de Origen
-- Nombre Operador
+El usuario puede registrar y consultar la siguiente información en ConcertReminder
+- concertName
+- artist
+- venue
+- concertDate
+- venueMap // En practica solo consultar
+
+El usuario puede registrar y consultar la siguiente información en Ticket
+- ticketCode
+- isValid // 50 / 50
+- hasBarcode // Solo consultar
+- changeSpamTries // Aumenta en 1 al intentar modificar Prioridad
