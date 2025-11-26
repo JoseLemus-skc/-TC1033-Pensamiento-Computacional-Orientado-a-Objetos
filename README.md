@@ -26,25 +26,25 @@ El usuario puede registrar y consultar la siguiente información en todas las cl
 - Metodo de envio // Solo consultar
 
 
-El usuario puede registrar y consultar la siguiente información en PromoSpam
+El usuario puede registrar y consultar la siguiente información en PromoSpam:
 - promoCode
 - discountPercent // Solo consultar
 - isUnsubscribeFunctional // En practica solo consultar
 
-El usuario puede registrar y consultar la siguiente información en PurchaseConfirmation
+El usuario puede registrar y consultar la siguiente información en PurchaseConfirmation:
 - moneySpent
 - orderID
 - paymentMethod
 - isRefundable // En practica solo consultar
 
-El usuario puede registrar y consultar la siguiente información en ConcertReminder
+El usuario puede registrar y consultar la siguiente información en ConcertReminder:
 - concertName
 - artist
 - venue
 - concertDate
 - venueMap // En practica solo consultar
 
-El usuario puede registrar y consultar la siguiente información en Ticket
+El usuario puede registrar y consultar la siguiente información en Ticket:
 - ticketCode
 - isValid // 50 / 50
 - hasBarcode // Solo consultar
