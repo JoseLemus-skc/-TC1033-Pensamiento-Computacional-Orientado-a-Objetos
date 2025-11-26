@@ -9,11 +9,11 @@ Crear una clase base llamada Email, a partir de la cual se derivarán todas las 
 
 Crear una clase hija PromoSpam con los siguientes atributos: un promoCode, un discountPercent aleatorio y un campo isUnsubscribeFunctional que siempre será false (se puede introducir otro valor booleano, aunque no se le asignara al atributo porque no existe la menor intención de permitir que el usuario deje de recibir estas cosas).
 
-Crear una clase hija PurchaseConfirmation con los siguientes atributos: un moneySpent, orderID, paymentMethod y un campo isRefundable que siempre será falso (igual, se puede intentar cambiarlo, pero regresará a falso como recordatorio al usuario de que aquí no existen los reembolsos). También se manejará un valor cantidad de dinero pagado + servicios, donde “servicios” es 200% del monto original por motivos absolutamente injustificables.
+Crear una clase hija PurchaseConfirmation con los siguientes atributos: un moneySpent, orderID y un campo isRefundable que siempre será falso (igual, se puede intentar cambiarlo, pero regresará a falso como recordatorio al usuario de que aquí no existen los reembolsos). También se manejará un valor cantidad de dinero pagado + servicios, donde “servicios” es 200% del monto original por motivos absolutamente injustificables.
 
-Crear una clase hija ConcertReminder con los siguientes atributos: concertName, artist, venue, concertDate y un campo venueMap vacío. La fecha del correo se ajustará automáticamente a la fecha del concierto, ignorando cualquier otra configuración previa. Si se intenta colocar cualquier cosa dentro del venueMap, el programa dará un error, porque quien intente hacer la experiencia del usuario lo más mínimo agradable merece un recordatorio de la política de la empresa.
+Crear una clase hija ConcertReminder con los siguientes atributos: concertName, venue, concertDate y un campo venueMap vacío. La fecha del concierto se ajustará automáticamente a la fecha que se enviara el correo. Si se intenta colocar cualquier cosa dentro del venueMap, el programa dará un error, porque quien intente hacer la experiencia del usuario lo más mínimo agradable merece un recordatorio de la política de la empresa.
 
-Crear una clase hija Ticket con los siguientes atributos: el ticketCode, un contador changeSpamTries que incrementará cada vez que el usuario intente cambiar la prioridad del correo (cuando esto ocurra, tambien la prioridad cambiará a “spammhell, fuck you” y el método de envío a “horse”), un campo isWorking que presentará una posibilidad de 50/50 entre verdadero y falso y un campo hasBarcode que siempre será false y no se podra cambiar.
+Crear una clase hija Ticket con los siguientes atributos: el ticketCode, un contador attempts que incrementará cada vez que el usuario intente cambiar el metodo de envio del correo (cuando esto ocurra, tambien el método de envío a “horse, fuck you”), un campo isValid que presentará una posibilidad de 50/50 entre verdadero y falso.
 
 ## Acciones del usuario.
 El usuario puede registrar y consultar la siguiente información en todas las clases hijas:
@@ -22,7 +22,7 @@ El usuario puede registrar y consultar la siguiente información en todas las cl
 - Asunto
 - Cuerpo
 - Hora a enviar // Excepcion de ConcertReminder
-- Prioridad // Solo consultar
+- Prioridad 
 - Metodo de envio // Solo consultar
 
 
@@ -34,12 +34,10 @@ El usuario puede registrar y consultar la siguiente información en PromoSpam:
 El usuario puede registrar y consultar la siguiente información en PurchaseConfirmation:
 - moneySpent
 - orderID
-- paymentMethod
 - isRefundable // En practica solo consultar
 
 El usuario puede registrar y consultar la siguiente información en ConcertReminder:
 - concertName
-- artist
 - venue
 - concertDate
 - venueMap // En practica solo consultar
@@ -47,5 +45,4 @@ El usuario puede registrar y consultar la siguiente información en ConcertRemin
 El usuario puede registrar y consultar la siguiente información en Ticket:
 - ticketCode
 - isValid // 50 / 50
-- hasBarcode // Solo consultar
-- changeSpamTries // Aumenta en 1 al intentar modificar Prioridad
+- attempts // Aumenta en 1 al intentar modificar la prioridad
