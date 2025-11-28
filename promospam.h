@@ -50,7 +50,7 @@ class PromoSpam: public Email{
 // Definiciones (updaters)
 std::string PromoSpam::updateSubject(){
     std::stringstream aux;
-    aux << "Se acaba el Ofertón ¡Aprovecha hasta " << discountPercentage << " porciento dcto!";
+    aux << "Se acaba el Oferton ¡Aprovecha hasta " << discountPercentage << " porciento dcto!";
     return aux.str();
 }
 std::string PromoSpam::updateBody(){
