@@ -63,8 +63,8 @@ std::string PurchaseConfirmation::updateSubject(){
 }
 std::string PurchaseConfirmation::updateBody(){
     std::stringstream aux;
-    aux << "Informacion del pago: \n Detalle de Cargos: " << moneySpent << "\n Service charge a pagar adicional: " << moneyOwed
-    << "\n Tu Teléfono es Tu Boleto ¡La opción más rápida y sencilla para tener tus boletos! Podrás visualizarlos en tu celular desde la app Ticketmaster" ;
+    aux << "Informacion del pago: \nDetalle de Cargos: " << moneySpent << "\nService charge a pagar adicional: " << moneyOwed
+    << "\nTu Telefono es Tu Boleto ¡La opcion mas rapida y sencilla para tener tus boletos! Podras visualizarlos en tu celular desde la app Ticketmaster" ;
     return aux.str();
 }
 
