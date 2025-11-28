@@ -19,6 +19,7 @@ class Tickets: public Email{
     void setSubject();
     void setBody();
 
+    public:
     // Constructors
     Tickets(): Email("", "", ""), concertName(""), artistName(""), ticketCode(""), isValid(false){
         setSubject();
@@ -104,5 +105,6 @@ std::string Tickets::getCode(){
 bool Tickets::getValidStatus(){
     return isValid;
 }
+
 
 #endif
