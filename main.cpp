@@ -7,11 +7,12 @@
 
 int main() {
     int opcion;
+    bool offButton = true;
 
     std::cout << "1) Crear PromoSpam\n";
     std::cout << "2) Crear Confirmacion Compra\n";
     std::cout << "3) Crear Tickets\n";
-    std::cout << "Opción: ";
+    std::cout << "Opcion: ";
     std::cin >> opcion;
 
     if (opcion == 1) {
@@ -27,6 +28,9 @@ int main() {
 
         PromoSpam spam(code, receiver, time);
         std::cout << spam.emailDraft() << "\n";
+        
+        std::cout << "Cerrar " << opcion << "?" ;
+        std::cin >> offButton;
     }
 
     else if (opcion == 2) {
@@ -47,6 +51,9 @@ int main() {
 
         PurchaseConfirmation confirmacion(money, orderID, receiver, time);
         std::cout << confirmacion.emailDraft() << "\n";
+
+        std::cout << "Cerrar " << opcion << "?" ;
+        std::cin >> offButton;
     }
 
     else if (opcion == 3) {
@@ -69,6 +76,9 @@ int main() {
 
         Tickets boletos(concert, artist, code, receiver, time);
         std::cout << boletos.emailDraft() << "\n";
+
+        std::cout << "Cerrar " << opcion << "?" ;
+        std::cin >> offButton;
     }
 
     else {
