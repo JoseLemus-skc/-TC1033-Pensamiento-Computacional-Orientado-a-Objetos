@@ -58,11 +58,11 @@ std::string Tickets::updateSubject(){
 std::string Tickets::updateBody(){
     std::stringstream aux;
     if (isValid == false){
-        aux << "Fecha del concierto: " << sendTime << " Estimado Fan: \n Recuerda descargar tus boletos [INVALIDOS] SafeTix™ con codigo, "
-        << ticketCode << " agrégalos a tu Wallet y de esta forma estarán disponibles aún sin conexión a internet";
+        aux << "Fecha del concierto: " << sendTime << "\n Estimado Fan: \n Recuerda descargar tus boletos [INVALIDOS] SafeTix con codigo "
+        << ticketCode << " agregalos a tu Wallet y de esta forma estaran disponibles aun sin conexion a internet";
     } else{
-        aux << "Fecha del concierto: " << sendTime << " Estimado Fan: \n Recuerda descargar tus boletos safeTix™ con codigo, "
-        << ticketCode << " agrégalos a tu Wallet y de esta forma estarán disponibles aún sin conexión a internet";
+        aux << "Fecha del concierto: " << sendTime << "\n Estimado Fan: \n Recuerda descargar tus boletos safeTix con codigo "
+        << ticketCode << " agregalos a tu Wallet y de esta forma estaran disponibles aun sin conexion a internet";
     }
     return aux.str();
 }
@@ -105,6 +105,5 @@ std::string Tickets::getCode(){
 bool Tickets::getValidStatus(){
     return isValid;
 }
-
 
 #endif
