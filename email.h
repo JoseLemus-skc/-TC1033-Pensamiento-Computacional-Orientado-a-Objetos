@@ -17,13 +17,13 @@ protected:
 public:
     // Constructors
     Email(){}
-    Email(std::string receiver, std::string time){
+    Email(std::string receiver, std::string date, std::string priority){
         subject = "";
         body = "";
         senderEmail = "noreply@ticketmaster.com.mx";
         receiverEmail = receiver;
-        sendTime = time;
-        emailPriority = "IMPORTANTE";
+        sendTime = date;
+        emailPriority = priority;
         deliveryMethod = "Correo electronico";
     }
 
@@ -33,6 +33,8 @@ public:
     void setPriority(std::string priority);
 
     // Getters
+    std::string getSubject();
+    std::string getBody();
     std::string getSender();
     std::string getReceiver();
     std::string getTime();
@@ -56,6 +58,12 @@ void Email:: setPriority(std::string priority){
 }
 
 // Definiciones (Getters)
+std::string Email::getSubject(){
+    return subject;
+}
+std::string Email::getBody(){
+    return body;
+}
 std::string Email::getSender(){
     return senderEmail;
 }
@@ -75,8 +83,8 @@ std::string Email::getDelivery(){
 
 // Definicion (Boceto de Email)
 std::string Email::emailDraft(){
-    std::string generalInfo = "Para: " + receiverEmail + "   Enviado:  " + sendTime; 
-    return generalInfo + "\n" + subject + "\n" + body;
+    std::string header = "Para: " + receiverEmail + "   Enviado:  " + sendTime; 
+    return header + "\n" + subject + "\n" + body  + "\n\n" + senderEmail;
 }
 
 #endif
