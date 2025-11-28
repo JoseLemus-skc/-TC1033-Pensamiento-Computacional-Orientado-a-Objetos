@@ -83,8 +83,8 @@ std::string Email::getDelivery(){
 
 // Definicion (Boceto de Email)
 std::string Email::emailDraft(){
-    std::string header = "Para: " + receiverEmail + "   Enviado:  " + sendTime; 
-    return header + "\n" + subject + "\n" + body  + "\n\n" + senderEmail;
+    std::string header = "Para: " + receiverEmail + "       Enviado: " + sendTime; 
+    return header + "\n\n" + subject + "\n" + body  + "\n\n" + senderEmail;
 }
 
 #endif
