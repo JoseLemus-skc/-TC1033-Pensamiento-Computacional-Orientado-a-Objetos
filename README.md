@@ -11,8 +11,6 @@ Crear una clase hija PromoSpam con los siguientes atributos: un promoCode, un di
 
 Crear una clase hija PurchaseConfirmation con los siguientes atributos: un moneySpent, orderID y un campo isRefundable que siempre será falso (igual, se puede intentar cambiarlo, pero regresará a falso como recordatorio al usuario de que aquí no existen los reembolsos). También se manejará un valor cantidad de dinero pagado + servicios, donde “servicios” es 200% del monto original por motivos absolutamente injustificables.
 
-Crear una clase hija ConcertReminder con los siguientes atributos: concertName, venue, concertDate y un campo venueMap vacío. La fecha del concierto se ajustará automáticamente a la fecha que se enviara el correo. Si se intenta colocar cualquier cosa dentro del venueMap, el programa dará un error, porque quien intente hacer la experiencia del usuario lo más mínimo agradable merece un recordatorio de la política de la empresa.
-
 Crear una clase hija Ticket con los siguientes atributos: el ticketCode, un contador attempts que incrementará cada vez que el usuario intente cambiar el metodo de envio del correo (cuando esto ocurra, tambien el método de envío a “horse, fuck you”), un campo isValid que presentará una posibilidad de 50/50 entre verdadero y falso.
 
 ## Acciones del usuario.
@@ -25,7 +23,6 @@ El usuario puede registrar y consultar la siguiente información en todas las cl
 - Prioridad 
 - Metodo de envio // Solo consultar
 
-
 El usuario puede registrar y consultar la siguiente información en PromoSpam:
 - promoCode
 - discountPercent // Solo consultar
@@ -35,12 +32,6 @@ El usuario puede registrar y consultar la siguiente información en PurchaseConf
 - moneySpent
 - orderID
 - isRefundable // En practica solo consultar
-
-El usuario puede registrar y consultar la siguiente información en ConcertReminder:
-- concertName
-- venue
-- concertDate
-- venueMap // En practica solo consultar
 
 El usuario puede registrar y consultar la siguiente información en Ticket:
 - ticketCode
