@@ -7,12 +7,15 @@
 
 class PurchaseConfirmation: public Email{
     private:
+    // Atributos
     float moneySpent;
     float moneyOwed;
     std::string orderID;
     bool isRefundable;
 
     // Procesamiento del Subject y Body
+    std::string bodyDateFormat();
+
     std::string updateSubject();
     std::string updateBody(); 
 
@@ -22,13 +25,13 @@ class PurchaseConfirmation: public Email{
     void addMadeUpFees();
     
     public:
-    // Constructors
-    PurchaseConfirmation(): Email("", "", ""), moneySpent(0), moneyOwed(0), isRefundable(false){
+    // Constructores
+    PurchaseConfirmation(): Email("", "", 23, 31, 12, 1999), moneySpent(0), moneyOwed(0), isRefundable(false){
         addMadeUpFees();
         setSubject();
         setBody();
     }
-    PurchaseConfirmation(float money, std::string ID, std::string receiver, std::string time): Email(receiver, time, "Main Inbox"){
+    PurchaseConfirmation(float money, std::string ID, std::string receiver, short h, short d, short m, short y): Email(receiver, "Main Inbox", h, d, m, y){
         moneySpent = money;
         moneyOwed = 0;
         orderID = ID;
@@ -56,14 +59,21 @@ class PurchaseConfirmation: public Email{
 
 
 // Definiciones (updaters)
+std::string PurchaseConfirmation::bodyDateFormat(){
+    std::stringstream aux;
+    aux << sendTime.getDay() << "/" << sendTime.getMonth() << "/" << sendTime.getYear();
+    return aux.str();
+}
+
 std::string PurchaseConfirmation::updateSubject(){
     std::stringstream aux;
     aux << "Resumen de tu compra " << orderID << " en Ticketmaster" ;
     return aux.str();
 }
+
 std::string PurchaseConfirmation::updateBody(){
     std::stringstream aux;
-    aux << "Informacion del pago: \nDetalle de Cargos: " << moneySpent << "\nService charge a pagar adicional: " << moneyOwed
+    aux << "Informacion del pago: \nDetalle de Cargos: " << moneySpent << "\nService charge a pagar adicional: " << moneyOwed << " Acumulan intereses a partir de" << bodyDateFormat()
     << "\nTu Telefono es Tu Boleto ¡La opcion mas rapida y sencilla para tener tus boletos! Podras visualizarlos en tu celular desde la app Ticketmaster" ;
     return aux.str();
 }
@@ -73,23 +83,28 @@ std::string PurchaseConfirmation::updateBody(){
 void PurchaseConfirmation::setSubject(){
     subject = updateSubject();
 }
+
 void PurchaseConfirmation::setBody(){
     body = updateBody();
 }
+
 void PurchaseConfirmation::setMoneySpent(float money){
     moneySpent = money;
     addMadeUpFees();
     setBody();
 }
+
 void PurchaseConfirmation::setOrderID(std::string ID){
     orderID = ID;
     setSubject();
 }
+
 void PurchaseConfirmation::setRefundable(bool state){
     if(state != false){
         exit(0);
     }
 }
+
 void PurchaseConfirmation::addMadeUpFees(){
     moneyOwed = moneySpent * 2;
 }
@@ -99,15 +114,17 @@ void PurchaseConfirmation::addMadeUpFees(){
 float PurchaseConfirmation::getMoneySpent(){
     return moneySpent;
 }
+
 float PurchaseConfirmation::getMoneyOwed(){
     return moneyOwed;
 }
+
 std::string PurchaseConfirmation::getOrderID(){
     return orderID;
 }
+
 bool PurchaseConfirmation::getRefundableStatus(){
     return isRefundable;
 }
-
 
 #endif
