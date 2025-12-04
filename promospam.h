@@ -1,9 +1,9 @@
 #ifndef PROMOSPAM_H
 #define PROMOSPAM_H
 
-# include <string>
-# include <sstream>
-# include "email.h"
+#include <string>
+#include <sstream>
+#include "email.h"
 
 class PromoSpam: public Email{
     private:
@@ -13,6 +13,8 @@ class PromoSpam: public Email{
     bool isUnsubscribeFunctional;
     
     // Procesamiento del Subject y Body
+    std::string bodyDateFormat();
+
     std::string updateSubject();
     std::string updateBody(); 
 
@@ -20,14 +22,14 @@ class PromoSpam: public Email{
     void setBody();
 
     public:
-    // Constructors
-    PromoSpam(): Email("", "", ""), promoCode(""), discountPercentage(0), isUnsubscribeFunctional(false){
+    // Constructores
+    PromoSpam(): Email("", "", 23, 31, 12, 1999), promoCode(""), discountPercentage(0), isUnsubscribeFunctional(false){
         setSubject();
         setBody();
     }
-    PromoSpam(std::string code, std::string receiver, std::string time): Email(receiver, time, "Importante"){
+    PromoSpam(std::string code, std::string receiver, short h, short d, short m, short y): Email(receiver, "Importante", h, d, m, y){
         promoCode = code;
-        discountPercentage = 100; // Corregir a Random
+        discountPercentage = -100;
         isUnsubscribeFunctional = false;
 
        // Actualizar subject y body
@@ -37,8 +39,8 @@ class PromoSpam: public Email{
 
     // Setters
     void setCode(std::string code);
-    void rollDiscount();
-    void setUnsubscribe(bool state);
+    void setDiscount(int discount);
+    void setUnsubscribe();
 
     // Getters
     std::string getCode();
@@ -48,15 +50,22 @@ class PromoSpam: public Email{
 
 
 // Definiciones (updaters)
-std::string PromoSpam::updateSubject(){
+std::string PromoSpam::bodyDateFormat(){
     std::stringstream aux;
-    aux << "Se acaba el Oferton ¡Aprovecha hasta " << discountPercentage << " porciento dcto!";
+    aux << sendTime.getMonthName() << " " << sendTime.getYear();
     return aux.str();
 }
+
+std::string PromoSpam::updateSubject(){
+    std::stringstream aux;
+    aux << "Se acaba el Oferton ¡Aprovecha hasta " << discountPercentage << "% de descuento!";
+    return aux.str();
+}
+
 std::string PromoSpam::updateBody(){
     std::stringstream aux;
     aux << "¡Apurate! Aprovacha el siguiente codigo: " << promoCode << " para obtener " 
-<< discountPercentage << " porciento de descuento en tu siguiente compra!!!";
+<< discountPercentage << "% de descuento en tu siguiente compra!!! \n\n Disponible hasta " << bodyDateFormat();
     return aux.str();
 }
 
@@ -65,22 +74,25 @@ std::string PromoSpam::updateBody(){
 void PromoSpam::setSubject(){
     subject = updateSubject();
 }
+
 void PromoSpam::setBody(){
     body = updateBody();
 }
+
 void PromoSpam::setCode(std::string code){
     promoCode = code;
     setSubject();
 
 }
-void PromoSpam::rollDiscount(){
-    discountPercentage = 100; // Corregir a Random
+
+void PromoSpam::setDiscount(int discount){
+    discountPercentage = discount;
     setSubject();
     setBody();
 }
-void PromoSpam::setUnsubscribe(bool state){
-    state = false;
-    isUnsubscribeFunctional = state;
+
+void PromoSpam::setUnsubscribe(){
+    return;
 }
 
 
@@ -88,9 +100,11 @@ void PromoSpam::setUnsubscribe(bool state){
 std::string PromoSpam::getCode(){
     return promoCode;
 }
+
 int PromoSpam::getDiscount(){
     return discountPercentage;
 }
+
 bool PromoSpam::unsubscriberState(){
     return isUnsubscribeFunctional;
 }
