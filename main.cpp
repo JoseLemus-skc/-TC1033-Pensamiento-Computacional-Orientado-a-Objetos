@@ -430,7 +430,7 @@ int main() {
 
                         userEmails.setSpamDiscount(modifierIndex, discount);
                         
-                        std::cout << "Se modifico con exito.\n\nRegresar." << std::endl;
+                        std::cout << "Se modifico con exito.\nTabula un digito y presione Enter para Regresar." << std::endl;
                         std::cin >> dummyInput;
                         break;
 
@@ -472,7 +472,7 @@ int main() {
                         }while (choice != 1 && choice != 2);
 
                         
-                        std::cout << "Buena decision.\n\nRegresar." << std::endl;
+                        std::cout << "Buena decision.\n\n\nTabula un digito y presione Enter para Regresar." << std::endl;
                         std::cin >> dummyInput;
                         break;
 
@@ -514,7 +514,7 @@ int main() {
                         }while (choice != 1 && choice != 2);
 
                         
-                        std::cout << "Consecuencias aplicadas con exito.\n\nRegresar." << std::endl;
+                        std::cout << "Consecuencias aplicadas con exito.\n\nTabula un digito y presione Enter para Regresar." << std::endl;
                         std::cin >> dummyInput;
                         break;
 
@@ -584,7 +584,7 @@ int main() {
 
                                     userEmails.setPriorityTicket(modifierIndex, priority);
                         
-                                    std::cout << "Se modifico con exito.\n\nRegresar." << std::endl;
+                                    std::cout << "Se modifico con exito.\n\n\nTabula un digito y presione Enter para Regresar." << std::endl;
                                     std::cin >> dummyInput;
                                     break;
 
@@ -644,4 +644,5 @@ int main() {
     }
     return 0;
 }
+
 
