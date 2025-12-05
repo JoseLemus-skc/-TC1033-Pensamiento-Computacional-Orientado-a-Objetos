@@ -25,7 +25,6 @@ class PromoSpam: public Email{
     // Declaracion de variables de instancia
     std::string promoCode;
     int discountPercentage;
-    bool isUnsubscribeFunctional;
 
     // Procesamiento del asunto y cuerpo
     std::string bodyDateFormat();
@@ -46,7 +45,7 @@ class PromoSpam: public Email{
      * @param
      * @return Objeto PromoSpam
      */
-    PromoSpam(): Email("", "", 23, 31, 12, 1999), promoCode(""), discountPercentage(0), isUnsubscribeFunctional(false){
+    PromoSpam(): Email("", "", 23, 31, 12, 1999), promoCode(""), discountPercentage(0){
         setSubject();
         setBody();
     }
@@ -66,7 +65,6 @@ class PromoSpam: public Email{
     PromoSpam(std::string code, std::string receiver, short h, short d, short m, short y): Email(receiver, "Importante", h, d, m, y){
         promoCode = code;
         discountPercentage = -100;
-        isUnsubscribeFunctional = false;
 
        // Actualizar subject y body
        setSubject();
@@ -78,8 +76,7 @@ class PromoSpam: public Email{
 
     // Declaracion de miembros de la clase (Getters)
     std::string getCode();
-    int getDiscount();
-    bool unsubscriberState();
+    int getDiscount();;
 };
 
 
