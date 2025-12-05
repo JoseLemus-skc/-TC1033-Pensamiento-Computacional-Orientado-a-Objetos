@@ -117,8 +117,12 @@ std::string PromoSpam::updateSubject(){
  */
 std::string PromoSpam::updateBody(){
     std::stringstream aux;
-    aux << "Apurate! Aprovacha el siguiente codigo: " << promoCode << " para obtener " 
-<< discountPercentage << "% de descuento en tu siguiente compra!!! \n\nDisponible hasta " << bodyDateFormat();
+    aux << "Apurate! Aprovacha el siguiente codigo: " 
+    << promoCode 
+    << " para obtener " 
+    << discountPercentage 
+    << "% de descuento en tu siguiente compra!!! \n\nDisponible hasta " 
+    << bodyDateFormat();
     return aux.str();
 }
 
