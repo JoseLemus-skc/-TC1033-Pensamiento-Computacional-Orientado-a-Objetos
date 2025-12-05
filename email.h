@@ -181,7 +181,10 @@ std::string Email::getDate(){
  */
 std::string Email::dateFormat(){
     std::stringstream aux;
-    aux << sendTime.getHour() << ":00 - " << sendTime.getDay() << "/" << sendTime.getMonth() << "/" << sendTime.getYear();  
+    aux << sendTime.getHour() << ":00 - " 
+    << sendTime.getDay() << "/" 
+    << sendTime.getMonth() << "/" 
+    << sendTime.getYear();  
     return aux.str();
 }
 
@@ -195,7 +198,10 @@ std::string Email::dateFormat(){
  * @return string: email formateado
  */
 std::string Email::emailDraft(){
-    std::string header = "Para: " + receiverEmail + "       Enviado: " + dateFormat(); 
+    std::string header = "Para: " 
+                + receiverEmail 
+                + "       Enviado: " 
+                + dateFormat(); 
     return header + "\n\n" + subject + "\n" + body  + "\n\n" + senderEmail;
 }
 
