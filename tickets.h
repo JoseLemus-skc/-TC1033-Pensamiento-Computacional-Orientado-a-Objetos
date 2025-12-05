@@ -124,10 +124,20 @@ std::string Tickets::updateBody(){
     std::stringstream aux;
     if (isValid == false){
         aux << "\nEstimado Fan: \nRecuerda que no tienes que descargar tus boletos SafeTix con codigo "
-        << ticketCode << " para " << artistName << " este " << bodyDateFormat() << " porque son invalidos\nNo es necesario agregarlos a tu Wallet. Byeeeee";
+        << ticketCode 
+        << " para "
+        << artistName 
+        << " este "
+        << bodyDateFormat() 
+        << " porque son invalidos\nNo es necesario agregarlos a tu Wallet. Byeeeee";
     } else{
-        aux << "\nEstimado Fan: \nRecuerda descargar tus boletos SafeTix con codigo " << ticketCode 
-        << " para " << artistName << " este " << bodyDateFormat() << "\nRecuerda agregarlos a tu Wallet y de esta forma estaran disponibles aun sin conexion a internet";
+        aux << "\nEstimado Fan: \nRecuerda descargar tus boletos SafeTix con codigo "
+        << ticketCode 
+        << " para " 
+        << artistName 
+        << " este " 
+        << bodyDateFormat()
+        << "\nRecuerda agregarlos a tu Wallet y de esta forma estaran disponibles aun sin conexion a internet";
     }
     return aux.str();
 }
