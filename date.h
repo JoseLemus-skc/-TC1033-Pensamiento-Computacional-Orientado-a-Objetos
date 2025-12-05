@@ -38,7 +38,7 @@ class Date{
      */
     Date(): hour(23), day(31), month(12), year(1999), 
         months{"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-            "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"}{};
+            "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"}{}
 
     /**
      * Constructor con parametros
@@ -58,7 +58,7 @@ class Date{
         month = m;
         year = y;
 
-    };
+    }
 
     // Declaracion de miembros de la clase.
     short getHour();
@@ -123,3 +123,4 @@ std::string Date::getMonthName(){
 }
 
 #endif
+
