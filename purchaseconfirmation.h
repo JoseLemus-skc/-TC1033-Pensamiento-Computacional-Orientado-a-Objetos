@@ -117,7 +117,9 @@ std::string PurchaseConfirmation::bodyDateFormat(){
  */
 std::string PurchaseConfirmation::updateSubject(){
     std::stringstream aux;
-    aux << "Resumen de tu compra " << orderID << " en Ticketmaster" ;
+    aux << "Resumen de tu compra " 
+    << orderID 
+    << " en Ticketmaster" ;
     return aux.str();
 }
 
@@ -129,7 +131,11 @@ std::string PurchaseConfirmation::updateSubject(){
  */
 std::string PurchaseConfirmation::updateBody(){
     std::stringstream aux;
-    aux << "Informacion del pago: \nDetalle de Cargos: $" << moneySpent << "\nService charge a pagar adicional: $" << moneyOwed << " (Acumulan intereses a partir de " << bodyDateFormat()
+    aux << "Informacion del pago: \nDetalle de Cargos: $" 
+    << moneySpent << "\nService charge a pagar adicional: $" 
+    << moneyOwed 
+    << " (Acumulan intereses a partir de " 
+    << bodyDateFormat()
     << ")\n\nTu Telefono es Tu Boleto. La opcion mas rapida y sencilla para tener tus boletos! Podras visualizarlos en tu celular desde la app Ticketmaster" ;
     return aux.str();
 }
