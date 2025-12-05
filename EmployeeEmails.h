@@ -10,13 +10,15 @@
  * hijas PromoSpam, PurchaseConfirmation y Tickets.
  */
 
-#ifndef EMPLOYEEEMAILS_H
-#define EMPLOYEEEMAILS_H
+#ifndef EMPLOYEEEMAILS_H_
+#define EMPLOYEEEMAILS_H_
 
 #include <string>
 #include "promospam.h"
 #include "purchaseconfirmation.h"
 #include "tickets.h"
+
+const int MAX = 16;
 
 class EmployeeEmails{
 
@@ -27,9 +29,9 @@ class EmployeeEmails{
     float perEmailCommission, earnings;
     int penalties;
 
-    PromoSpam promoSpamList[16];
-    PurchaseConfirmation purchaseConfirmationList[16];
-    Tickets ticketList[16];
+    PromoSpam promoSpamList[MAX];
+    PurchaseConfirmation purchaseConfirmationList[MAX];
+    Tickets ticketList[MAX];
 
     int promoSpamIndex, purchaseConfirmationIndex, ticketIndex;
 
